@@ -6,12 +6,10 @@ public class MoveRazer : MonoBehaviour {
 
     //プレイヤ―の位置取得用
     public GameObject Player;
-    
+
 
     //出現位置の設定(レーザー)
-    public float RazerX;
-    public float RazerY;
-    public float RazerZ;
+    public GameObject LaserStartPos;
 
     //移動速度
     public float Speed;
@@ -28,7 +26,10 @@ public class MoveRazer : MonoBehaviour {
         //速度設定
         SetSpeed();
         //初期位置の設定
-        transform.position = new Vector3(RazerX, RazerY, RazerZ);
+        transform.position = new Vector3(
+            LaserStartPos.transform.position.x,
+            LaserStartPos.transform.position.y,
+            LaserStartPos.transform.position.z);
 
     }
 
@@ -45,9 +46,9 @@ public class MoveRazer : MonoBehaviour {
     void SetSpeed()
     {
         //速度と距離から毎フレームの移動距離を測定
-        x_move = (0 - RazerX) / (Speed * 60);
-        y_move = (0 - RazerY) / (Speed * 60);
-        z_move = (0 - RazerZ) / (Speed * 60);
+        x_move = (0 - LaserStartPos.transform.position.x) / (Speed * 60);
+        y_move = (0 - LaserStartPos.transform.position.y) / (Speed * 60);
+        z_move = (0 - LaserStartPos.transform.position.z) / (Speed * 60);
     }
 
     //移動処理
