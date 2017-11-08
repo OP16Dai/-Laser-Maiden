@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 136987978449009214}
   - component: {fileID: 23203501887176302}
   - component: {fileID: 114001049942714046}
-  - component: {fileID: 114240888737278466}
+  - component: {fileID: 114097289387385220}
   m_Layer: 0
   m_Name: RotateRight
   m_TagString: Untagged
@@ -38,8 +38,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1537515690911532}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -1.3660841, y: 0.035856973, z: 30.74781}
-  m_LocalScale: {x: 0.21475464, y: 17.976568, z: 0.31279993}
+  m_LocalPosition: {x: -0.5, y: 1.2, z: 30}
+  m_LocalScale: {x: 0.15, y: 15, z: 0.15}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotateSpeed: -2
---- !u!114 &114240888737278466
+--- !u!114 &114097289387385220
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

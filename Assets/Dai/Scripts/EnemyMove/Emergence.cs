@@ -65,38 +65,37 @@ public class Emergence : MonoBehaviour {
                 //GameObject.Instantiate(Prefabs, new Vector3(0, 0, 0), new Quaternion(0,0,0,0));
 
                 //敵の出撃
-                GameObject.Instantiate(Prefabs[0], new Vector3(-0.5f, 1.2f, 30), Prefabs[0].transform.rotation);
+                GameObject.Instantiate(Prefabs[1], new Vector3(-0.5f, 1.2f, 30), Prefabs[1].transform.rotation);
             }
             //一定時間経過
             if (StageTime == 120)
             {
-                //敵を出撃
                 //敵の出撃
-                GameObject.Instantiate(Prefabs[1], new Vector3(-0.5f, 1.2f, 30), Prefabs[1].transform.rotation);
+                GameObject.Instantiate(Prefabs[1], new Vector3(0.0f, 1.2f, 30), Prefabs[1].transform.rotation);
             }
             //一定時間経過
             if (StageTime == 180)
             {
-                //敵を出撃
                 //敵の出撃
-                GameObject.Instantiate(Prefabs[1], new Vector3(-0.5f, 1.2f, 30), Prefabs[2].transform.rotation);
+                GameObject.Instantiate(Prefabs[1], new Vector3(-1.5f, 1.2f, 30), Prefabs[1].transform.rotation);
             }
             //一定時間経過
             if (StageTime == 240)
             {
-                //敵を出撃
-                //敵の出撃
-                GameObject.Instantiate(Prefabs[1], new Vector3(-0.5f, 1.2f, 30), Prefabs[3].transform.rotation);
+                //敵の出撃(ジャンプさせる)
+                GameObject.Instantiate(Prefabs[0], new Vector3(-0.5f, 0.5f, 30), Prefabs[0].transform.rotation);
+            }
+            //一定時間経過
+            if (StageTime == 300)
+            {
+                //敵の出撃（しゃがませる）
+                GameObject.Instantiate(Prefabs[0], new Vector3(-0.5f, 2.0f, 30), Prefabs[0].transform.rotation);
             }
 
 
             //一定時間経過
-            if (StageTime == 300)
+            if (StageTime == 360)
             {
-                //================
-                //ステージ01終了
-                //================
-
                 //時間リセット
                 ResetTime = false;
             }
@@ -106,13 +105,6 @@ public class Emergence : MonoBehaviour {
         //=====================================
         if (Level == 2)
         {
-            //ステージの切り替わりに一度経過時間リセット
-            if(ResetTime == false)
-            {
-                StageTime = 0;
-                ResetTime = true;
-            }
-
             //一定時間経過
             if (StageTime == 60)
             {
@@ -122,6 +114,14 @@ public class Emergence : MonoBehaviour {
         }
 
 
+
+
+        //ステージの切り替わりに一度経過時間リセット
+        if (ResetTime == false)
+        {
+            StageTime = 0;
+            ResetTime = true;
+        }
 
         //経過時間(フレーム数)
         StageTime++;
@@ -135,4 +135,5 @@ public class Emergence : MonoBehaviour {
     {
         Level = LevelCount.Level;
     }
+
 }
