@@ -75,6 +75,22 @@ public class Emergence : MonoBehaviour {
                 GameObject.Instantiate(Prefabs[1], new Vector3(-0.5f, 1.2f, 30), Prefabs[1].transform.rotation);
             }
             //一定時間経過
+            if (StageTime == 180)
+            {
+                //敵を出撃
+                //敵の出撃
+                GameObject.Instantiate(Prefabs[1], new Vector3(-0.5f, 1.2f, 30), Prefabs[2].transform.rotation);
+            }
+            //一定時間経過
+            if (StageTime == 240)
+            {
+                //敵を出撃
+                //敵の出撃
+                GameObject.Instantiate(Prefabs[1], new Vector3(-0.5f, 1.2f, 30), Prefabs[3].transform.rotation);
+            }
+
+
+            //一定時間経過
             if (StageTime == 300)
             {
                 //================
