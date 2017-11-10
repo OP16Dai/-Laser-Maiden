@@ -7,6 +7,9 @@ public class Basic : MonoBehaviour {
     //プレイヤー取得用
     GameObject Player;
 
+    //プレイヤー開始位置保管
+    Vector3 StartPosition = new Vector3(0, 0, -0.2f);
+
     //何秒(60f/1s)でプレイヤーのところに行くか
     public float Speed =1f;
 
@@ -21,7 +24,7 @@ public class Basic : MonoBehaviour {
         //===============================================
         Player = GameObject.FindGameObjectWithTag("Player");
         //毎フレームの移動距離計算
-        m_moveZ = ((Player.transform.position.z - transform.position.z) / 60) / Speed;
+        m_moveZ = ((StartPosition.z - transform.position.z) / 60) / Speed;
     }
 	
 	// Update is called once per frame
@@ -42,7 +45,7 @@ public class Basic : MonoBehaviour {
     //プレイヤーを通り越したら削除
     void RemoveRazer()
     {
-        if (transform.position.z < Player.transform.position.z)
+        if (transform.position.z < (StartPosition.z - 5))
         {
             Destroy(gameObject);
         }
