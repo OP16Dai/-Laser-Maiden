@@ -8,7 +8,7 @@ public class StageExtend : MonoBehaviour {
     // 定数はここから
     //=====================================
     // 1Tipのステージサイズ
-    const int StageTipSize = 50;
+    const int StageTipSize = 30;
 
     //======================================
     // 変数はここから
@@ -46,8 +46,17 @@ public class StageExtend : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+        // キャラクターの位置から現在のステージチップのインデックスを計算
+        int charaPositionIndex = (int)(Character.position.z / StageTipSize);
+
+        // 次のステージチップに入ったらステージの更新処理を行う
+        if (charaPositionIndex + preInstantiate > currentTipIndex)
+        {
+            UpdateStage(charaPositionIndex + preInstantiate);
+        }
+
+    }
 
     // 指定のIndexまでのステージチップを生成して、管理化に置く
     void UpdateStage(int toTipIndex)

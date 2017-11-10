@@ -30,5 +30,8 @@ public class PlayerMove : MonoBehaviour {
             //RunからWaitに移動する
             this.animator.SetBool(key_isJump, false);
         }
+
+    
+         
     }
 }
