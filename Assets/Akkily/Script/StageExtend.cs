@@ -8,7 +8,7 @@ public class StageExtend : MonoBehaviour {
     // 定数はここから
     //=====================================
     // 1Tipのステージサイズ
-    const int StageTipSize = 30;
+    const int StageTipSize = 50;
 
     //======================================
     // 変数はここから
@@ -68,6 +68,7 @@ public class StageExtend : MonoBehaviour {
         // 指定のステージチップまで生成
         for(int i = currentTipIndex + 1; i <= toTipIndex; i++)
         {
+            // ステージ生成
             GameObject stageObject = generateStage(i);
 
             // 生成したステージチップを管理リストに追加
