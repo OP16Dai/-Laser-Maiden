@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rotate : MonoBehaviour {
+public class RotateSide : MonoBehaviour {
 
     //回転速度(大きいほど早い)
     public float RotateSpeed;
