@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Emergence : MonoBehaviour {
 
+    //プレイヤー保管
+    GameObject Player;
+
     //ステージステータス管理オブジェクト保管
     GameObject Status;
     //レベル管理スクリプト保管
@@ -14,8 +17,10 @@ public class Emergence : MonoBehaviour {
     //現在のレベル
     int Level;
 
-    //生成するプレファブ
+    //生成するプレファブ（敵）
     public GameObject[] Prefabs;
+    //生成する位置
+    Vector3 EnemyPos;
 
     //ステージ開始からの経過時間(フレーム数)
     int StageTime;
@@ -32,6 +37,8 @@ public class Emergence : MonoBehaviour {
     // Use this for initialization
     //========================================================
     void Start () {
+        //プレイヤー
+        Player = GameObject.Find("Player");
         //ステージステータスオブジェクト保管
         Status = GameObject.Find("StageStatus");
         //レベル管理スクリプト保管
