@@ -13,7 +13,7 @@ public class MoveDiagonal : MonoBehaviour {
     //奥行
     public float MoveZ = 0;
 
-    //往復する時間
+    //折り返しまでの時間
     public int BackTime;
 
     //時間経過
