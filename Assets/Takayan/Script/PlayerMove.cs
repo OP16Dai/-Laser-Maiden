@@ -21,7 +21,7 @@ public class PlayerMove : MonoBehaviour {
 
     //設定したフラグ名
     const string key_isJump = "isJump";
-    const string key_isRun = "isRun";
+    const string key_isSliding = "isSliding";
     //右キーを押したかどうか
     bool rightKey = false;
     //左キーを押したかどうか
@@ -38,19 +38,21 @@ public class PlayerMove : MonoBehaviour {
     void Update()
     {
         
-        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Jump") == false)
+        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Jump") == false && animator.GetCurrentAnimatorStateInfo(0).IsTag("Sliding") == false)
         {
             moveX = Input.GetAxis("Horizontal") * Time.deltaTime * movement;
-            moveZ = Input.GetAxis("Vertical") * Time.deltaTime * movement;
+            moveZ = 1 * Time.deltaTime * movement;
             Vector3 direction = new Vector3(moveX, 0, moveZ);
             if (direction.magnitude > 0.01f)
             {
                 Quaternion myQ = Quaternion.LookRotation(direction);
                 float step = rotateSpeed * Time.deltaTime;
+
                 this.transform.rotation = Quaternion.Lerp(transform.rotation, myQ, step);
+                
             }
         }
-
+        
 
 
 
@@ -60,43 +62,34 @@ public class PlayerMove : MonoBehaviour {
 
 
 
+        //transform.position += transform.forward * 0.05f;
+       
 
-        if (Input.GetKey("up"))
-        {
-            //transform.position += transform.forward * 0.05f;
-
-            animator.SetBool(key_isRun, true);
-        }
-        else if (Input.GetKey(KeyCode.DownArrow))
-        {
-
-            animator.SetBool(key_isRun, true);
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-
-            animator.SetBool(key_isRun, true);
-        }
-        else if (Input.GetKey(KeyCode.LeftArrow))
-        {
-
-            animator.SetBool(key_isRun, true);
-        }
-        else
-        {
-            animator.SetBool(key_isRun, false);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             animator.SetBool(key_isJump, true);
 
         }
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.UpArrow))
         {
             animator.SetBool(key_isJump, false);
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            animator.SetBool(key_isSliding, true);
+
+        }
+        if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            animator.SetBool(key_isSliding, false);
+        }
+
+    }
+
+    private void LateUpdate()
+    {
+       // GameObject.FindGameObjectWithTag("Player").transform.Translate(0, -0.08f, 0);
     }
 
     void FixedUpdate()

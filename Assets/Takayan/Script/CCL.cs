@@ -12,7 +12,8 @@ public class CCL : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
         //プレイヤーとカメラ間の距離を取得してそのオフセット値を計算し、格納します。
         offset.x = transform.position.x - player.transform.position.x;
-        offset.y = transform.position.y - player.transform.position.y;
+        //offset.y = transform.position.y - player.transform.position.y;
+        offset.y = transform.position.y;
         offset.z = transform.position.z - player.transform.position.z;
 
         

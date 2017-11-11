@@ -16,6 +16,9 @@ public class StageExtend : MonoBehaviour {
     // Tip番号
     int currentTipIndex;
 
+   
+ 
+
     //===========================Public指定==============================
 
     // 指定キャラクター位置
@@ -78,12 +81,16 @@ public class StageExtend : MonoBehaviour {
         // ステージ保持上限になるまで古いステージを削除
         while(generatedStageList.Count > preInstantiate + 2)
         {
+            
+
             // 一番古いステージを取得
             GameObject oldStage = generatedStageList[0];
             // 管理リストから一番古いステージを取り去る
             generatedStageList.RemoveAt(0);
             // 一番古いステージを削除
             Destroy(oldStage);
+
+            
         }
 
         // 指定番号の上書き
