@@ -22,10 +22,11 @@ public class PlayerMove : MonoBehaviour {
     //設定したフラグ名
     const string key_isJump = "isJump";
     const string key_isSliding = "isSliding";
-    //右キーを押したかどうか
-    bool rightKey = false;
-    //左キーを押したかどうか
-    bool leftKey = false;
+    //右キーを押せるかどうか
+    bool rightKey = true;
+    //左キーを押せるかどうか
+    bool leftKey = true;
+
 
     void Start()
     {
@@ -40,7 +41,17 @@ public class PlayerMove : MonoBehaviour {
         
         if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Jump") == false && animator.GetCurrentAnimatorStateInfo(0).IsTag("Sliding") == false)
         {
-            moveX = Input.GetAxis("Horizontal") * Time.deltaTime * movement;
+     if(Input.GetKey(KeyCode.RightArrow) && rightKey == true)
+            {
+                moveX = Input.GetAxis("Horizontal") * Time.deltaTime * movement;
+            }else if (Input.GetKey(KeyCode.LeftArrow) && leftKey == true)
+            {
+                moveX = Input.GetAxis("Horizontal") * Time.deltaTime * movement;
+            }else
+            {
+                moveX = 0;
+            }
+
             moveZ = 1 * Time.deltaTime * movement;
             Vector3 direction = new Vector3(moveX, 0, moveZ);
             if (direction.magnitude > 0.01f)
