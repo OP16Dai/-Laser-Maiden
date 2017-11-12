@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Takayan/Result.unity
+    guid: a9a23ec94ad5e2b449cba578ba31cf56
+  - enabled: 1
+    path: Assets/Takayan/TestWorld.unity
+    guid: 86751731036ad7d438010ab3289a0090

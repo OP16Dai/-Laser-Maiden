@@ -11,7 +11,7 @@ public class PlayerMove : MonoBehaviour {
     [SerializeField]
     private float rotateSpeed = 20f;
     float moveX = 0f, moveZ = 0f;
-    Rigidbody rb;
+    Rigidbody rigidbody;
 
     //Animatorコンポーネント
     Animator animator;
@@ -30,7 +30,8 @@ public class PlayerMove : MonoBehaviour {
 
     void Start()
     {
-        rb = this.GetComponent<Rigidbody>();
+        //自分に設定されているARigidbodyコンポーネントを取得する
+        this.rigidbody = GetComponent<Rigidbody>();
         //自分に設定されているAnimatorコンポーネントを取得する
         this.animator = GetComponent<Animator>();
 
@@ -63,8 +64,17 @@ public class PlayerMove : MonoBehaviour {
                 
             }
         }
-        
 
+
+        //---------------------------------ここから重力に関する処理---------------------------------
+        if (this.transform.position.y < 1.0f)
+        {
+            rigidbody.useGravity = false;
+        }
+        else
+        {
+            rigidbody.useGravity = true;
+        }
 
 
 
@@ -74,7 +84,7 @@ public class PlayerMove : MonoBehaviour {
 
 
         //transform.position += transform.forward * 0.05f;
-       
+
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {

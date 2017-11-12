@@ -43,6 +43,10 @@ public class CCL : MonoBehaviour {
 
     void LateUpdate()
     {
+        //カメラの transform 位置をプレイヤーのものと等しく設定します。ただし、計算されたオフセット距離によるずれも加えます。
+        transform.position = player.transform.position + offset;
+
+        /*
         if (this.anim.GetCurrentAnimatorStateInfo(0).IsTag("Jump") == true)
         {
 
@@ -60,5 +64,6 @@ public class CCL : MonoBehaviour {
 
   
         }
+        */
     }
 }
