@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collision : MonoBehaviour {
+public class EnemyMove : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -11,13 +11,7 @@ public class Collision : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
-
-
-    //衝突後処理
-    void OnCollisionEnter(Collision collision)
-    {
+        this.transform.position -= transform.forward * 5 * Time.deltaTime;
 
     }
 }
