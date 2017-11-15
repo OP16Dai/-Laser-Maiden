@@ -1145,11 +1145,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4221828138097730, guid: 7c9758dfe01b1c545bc74bc958e0f5dd, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.36100006
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4221828138097730, guid: 7c9758dfe01b1c545bc74bc958e0f5dd, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -1.0909998
+      value: -0.46
       objectReference: {fileID: 0}
     - target: {fileID: 4221828138097730, guid: 7c9758dfe01b1c545bc74bc958e0f5dd, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1414,6 +1414,16 @@ Prefab:
     - target: {fileID: 1070606147159746, guid: 7c9758dfe01b1c545bc74bc958e0f5dd, type: 2}
       propertyPath: m_Name
       value: Robot Kyle Ver2
+      objectReference: {fileID: 0}
+    - target: {fileID: 54874564093249634, guid: 7c9758dfe01b1c545bc74bc958e0f5dd,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114516266824604950, guid: 7c9758dfe01b1c545bc74bc958e0f5dd,
+        type: 2}
+      propertyPath: GravityBoundary
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7c9758dfe01b1c545bc74bc958e0f5dd, type: 2}
@@ -2957,7 +2967,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 840013539}
   m_LocalRotation: {x: 0.21623555, y: -0, z: -0, w: 0.97634125}
-  m_LocalPosition: {x: 0.05, y: 2.55, z: -3.83}
+  m_LocalPosition: {x: 0.05, y: 4.36, z: -2.99}
   m_LocalScale: {x: 1, y: 1, z: 0.6105559}
   m_Children: []
   m_Father: {fileID: 0}

@@ -10,6 +10,8 @@ public class PlayerMove : MonoBehaviour {
     private float movement = 20f;
     [SerializeField]
     private float rotateSpeed = 20f;
+    [SerializeField]
+    private float GravityBoundary = 0.0f;
     float moveX = 0f, moveZ = 0f;
     Rigidbody rigidbody;
 
@@ -23,9 +25,9 @@ public class PlayerMove : MonoBehaviour {
     const string key_isJump = "isJump";
     const string key_isSliding = "isSliding";
     //右キーを押せるかどうか
-    bool rightKey = true;
+    public bool rightKey = true;
     //左キーを押せるかどうか
-    bool leftKey = true;
+    public bool leftKey = true;
 
 
     void Start()
@@ -42,7 +44,7 @@ public class PlayerMove : MonoBehaviour {
         
         if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Jump") == false && animator.GetCurrentAnimatorStateInfo(0).IsTag("Sliding") == false)
         {
-     if(Input.GetKey(KeyCode.RightArrow) && rightKey == true)
+            if(Input.GetKey(KeyCode.RightArrow) && rightKey == true)
             {
                 moveX = Input.GetAxis("Horizontal") * Time.deltaTime * movement;
             }else if (Input.GetKey(KeyCode.LeftArrow) && leftKey == true)
@@ -67,7 +69,7 @@ public class PlayerMove : MonoBehaviour {
 
 
         //---------------------------------ここから重力に関する処理---------------------------------
-        if (this.transform.position.y < 1.0f)
+        if (this.transform.position.y < GravityBoundary)
         {
             rigidbody.useGravity = false;
         }
