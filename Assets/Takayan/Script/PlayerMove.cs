@@ -10,8 +10,10 @@ public class PlayerMove : MonoBehaviour {
     private float movement = 20f;
     [SerializeField]
     private float rotateSpeed = 20f;
+    [SerializeField]
+    private float GravityBoundary = 0.0f;
     float moveX = 0f, moveZ = 0f;
-    Rigidbody rb;
+    Rigidbody rigidbody;
 
     //Animatorコンポーネント
     Animator animator;
@@ -22,14 +24,16 @@ public class PlayerMove : MonoBehaviour {
     //設定したフラグ名
     const string key_isJump = "isJump";
     const string key_isSliding = "isSliding";
-    //右キーを押したかどうか
-    bool rightKey = false;
-    //左キーを押したかどうか
-    bool leftKey = false;
+    //右キーを押せるかどうか
+    public bool rightKey = true;
+    //左キーを押せるかどうか
+    public bool leftKey = true;
+
 
     void Start()
     {
-        rb = this.GetComponent<Rigidbody>();
+        //自分に設定されているARigidbodyコンポーネントを取得する
+        this.rigidbody = GetComponent<Rigidbody>();
         //自分に設定されているAnimatorコンポーネントを取得する
         this.animator = GetComponent<Animator>();
 
@@ -40,7 +44,17 @@ public class PlayerMove : MonoBehaviour {
         
         if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Jump") == false && animator.GetCurrentAnimatorStateInfo(0).IsTag("Sliding") == false)
         {
-            moveX = Input.GetAxis("Horizontal") * Time.deltaTime * movement;
+            if(Input.GetKey(KeyCode.RightArrow) && rightKey == true)
+            {
+                moveX = Input.GetAxis("Horizontal") * Time.deltaTime * movement;
+            }else if (Input.GetKey(KeyCode.LeftArrow) && leftKey == true)
+            {
+                moveX = Input.GetAxis("Horizontal") * Time.deltaTime * movement;
+            }else
+            {
+                moveX = 0;
+            }
+
             moveZ = 1 * Time.deltaTime * movement;
             Vector3 direction = new Vector3(moveX, 0, moveZ);
             if (direction.magnitude > 0.01f)
@@ -52,8 +66,17 @@ public class PlayerMove : MonoBehaviour {
                 
             }
         }
-        
 
+
+        //---------------------------------ここから重力に関する処理---------------------------------
+        if (this.transform.position.y < GravityBoundary)
+        {
+            rigidbody.useGravity = false;
+        }
+        else
+        {
+            rigidbody.useGravity = true;
+        }
 
 
 
@@ -63,7 +86,7 @@ public class PlayerMove : MonoBehaviour {
 
 
         //transform.position += transform.forward * 0.05f;
-       
+
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
