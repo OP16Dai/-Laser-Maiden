@@ -6,6 +6,9 @@ public class PlayerSideControl : MonoBehaviour {
 
     //プレイヤー保管
     GameObject Player;
+    //プレイヤー動作スクリプト保管
+    PlayerMove PlayerMove;
+
     //右壁
     GameObject RightWallStopPos;
     //左壁
@@ -15,6 +18,8 @@ public class PlayerSideControl : MonoBehaviour {
 	void Start () {
         //プレイヤータグで取得
         Player = GameObject.FindGameObjectWithTag("Player");
+        //プレイヤー動作スクリプト取得
+        PlayerMove = Player.GetComponent<PlayerMove>();
         //右の停止位置を取得
         RightWallStopPos = GameObject.Find("RightWallStopPos");
         //左の停止位置を取得
@@ -26,13 +31,18 @@ public class PlayerSideControl : MonoBehaviour {
         //一定ラインより右に行くと
 		if(Player.transform.position.x >= RightWallStopPos.transform.position.x)
         {
-            
+            PlayerMove.rightKey = false;   
+        }
+        //一定ラインより右に行くと
+        if (Player.transform.position.x >= RightWallStopPos.transform.position.x)
+        {
+            PlayerMove.rightKey = false;
         }
 
         //一定ラインより左に行くと
         if (Player.transform.position.x <= LeftWallStopPos.transform.position.x)
         {
-
+            PlayerMove.leftKey = false;   
         }
     }
 }

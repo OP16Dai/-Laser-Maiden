@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class ChangeScene : MonoBehaviour {
+public class EnemyMove : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -12,9 +11,7 @@ public class ChangeScene : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            SceneManager.LoadScene("DaiTest");
-        }
+        this.transform.position -= transform.forward * 5 * Time.deltaTime;
+
     }
 }
