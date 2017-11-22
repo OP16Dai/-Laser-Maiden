@@ -11,7 +11,7 @@ using UnityEngine;
 //メッシュフィルターコンポーネントを取り付け
 [RequireComponent(typeof(MeshFilter))]
 
-public class PolygonMesh : MonoBehaviour
+public class CreateMesh : MonoBehaviour
 {
 
     //MeshFilterクラスはオブジェクトに取り付けられているメッシュフィルターコンポーネントのMeshにアクセスするクラス
@@ -23,7 +23,7 @@ public class PolygonMesh : MonoBehaviour
     private Mesh _mesh;
 
     //ポリゴンの頂点を入れる変数
-    private Vector3[] _vertices;
+    public Vector3[] _vertices;
 
     void Start()
     {
@@ -56,5 +56,7 @@ public class PolygonMesh : MonoBehaviour
 
         _meshFilter = GetComponent<MeshFilter>();
         _meshFilter.mesh = _mesh;
+
+
     }
 }
