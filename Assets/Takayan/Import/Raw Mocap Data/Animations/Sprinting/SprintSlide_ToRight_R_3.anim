@@ -21,13 +21,13 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: -0.086800925
+        value: 0.00031062216
         inSlope: 0.002767312
         outSlope: 0.002767312
         tangentMode: 0
       - serializedVersion: 2
-        time: 1.7666667
-        value: 0.49221456
+        time: 1.8333334
+        value: 2.6453195
         inSlope: -0.00024018344
         outSlope: -0.00024018344
         tangentMode: 0
@@ -152,36 +152,36 @@ AnimationClip:
       - serializedVersion: 2
         time: 1.166667
         value: 0.7176272
-        inSlope: 0.6709064
-        outSlope: 0.6709064
+        inSlope: 0.84771305
+        outSlope: 0.84771305
         tangentMode: 0
       - serializedVersion: 2
-        time: 1.333334
-        value: 0.8234472
-        inSlope: 0.66972524
-        outSlope: 0.66972524
+        time: 1.3333334
+        value: 0.7800894
+        inSlope: -0.10685856
+        outSlope: -0.10685856
         tangentMode: 0
       - serializedVersion: 2
-        time: 1.4333334
-        value: 0.86784333
+        time: 1.4333333
+        value: 0.7767154
         inSlope: -0.0044799745
         outSlope: -0.0044799745
         tangentMode: 0
       - serializedVersion: 2
-        time: 1.5666676
-        value: 0.8486581
+        time: 1.5666667
+        value: 0.7795892
         inSlope: 0.29951456
         outSlope: 0.29951456
         tangentMode: 0
       - serializedVersion: 2
-        time: 1.7000008
-        value: 0.8993557
+        time: 1.7
+        value: 0.78194696
         inSlope: -0.030144777
         outSlope: -0.030144777
         tangentMode: 0
       - serializedVersion: 2
-        time: 1.7333336
-        value: 0.8973841
+        time: 1.7333333
+        value: 0.78687996
         inSlope: -0.07843062
         outSlope: -0.07843062
         tangentMode: 0
@@ -32126,7 +32126,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.7666667
+    m_StopTime: 1.8333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -32147,13 +32147,13 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: -0.086800925
+        value: 0.00031062216
         inSlope: 0.002767312
         outSlope: 0.002767312
         tangentMode: 0
       - serializedVersion: 2
-        time: 1.7666667
-        value: 0.49221456
+        time: 1.8333334
+        value: 2.6453195
         inSlope: -0.00024018344
         outSlope: -0.00024018344
         tangentMode: 0
@@ -32278,36 +32278,36 @@ AnimationClip:
       - serializedVersion: 2
         time: 1.166667
         value: 0.7176272
-        inSlope: 0.6709064
-        outSlope: 0.6709064
+        inSlope: 0.84771305
+        outSlope: 0.84771305
         tangentMode: 0
       - serializedVersion: 2
-        time: 1.333334
-        value: 0.8234472
-        inSlope: 0.66972524
-        outSlope: 0.66972524
+        time: 1.3333334
+        value: 0.7800894
+        inSlope: -0.10685856
+        outSlope: -0.10685856
         tangentMode: 0
       - serializedVersion: 2
-        time: 1.4333334
-        value: 0.86784333
+        time: 1.4333333
+        value: 0.7767154
         inSlope: -0.0044799745
         outSlope: -0.0044799745
         tangentMode: 0
       - serializedVersion: 2
-        time: 1.5666676
-        value: 0.8486581
+        time: 1.5666667
+        value: 0.7795892
         inSlope: 0.29951456
         outSlope: 0.29951456
         tangentMode: 0
       - serializedVersion: 2
-        time: 1.7000008
-        value: 0.8993557
+        time: 1.7
+        value: 0.78194696
         inSlope: -0.030144777
         outSlope: -0.030144777
         tangentMode: 0
       - serializedVersion: 2
-        time: 1.7333336
-        value: 0.8973841
+        time: 1.7333333
+        value: 0.78687996
         inSlope: -0.07843062
         outSlope: -0.07843062
         tangentMode: 0

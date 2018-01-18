@@ -13,7 +13,7 @@ public class PlayerMoveSample : MonoBehaviour
     private float rotateSpeed = 20f;
     [SerializeField]
     private float GravityBoundary = 0.0f;
-    float moveX = 0f, moveZ = 0f;
+    float moveX = 0f, moveZ = 1.0f;
     Rigidbody rigidbody;
 
     //Animatorコンポーネント
@@ -25,7 +25,6 @@ public class PlayerMoveSample : MonoBehaviour
     const string key_isJump = "isJump";
     const string key_isSliding = "isSliding";
     const string key_isRun = "isRun";
-    const string key_isIdle = "isIdle";
 
     //右キーを押せるかどうか
     public bool rightKey = true;
@@ -36,11 +35,13 @@ public class PlayerMoveSample : MonoBehaviour
     [SerializeField]
     float LeftBoundary = 0.0f;
 
+    //画面上で指が動いたかどうか
+    bool moveFinger = false;
+
+    float onTapPosition = 0.0f;
+    float EndTapPosition = 0.0f;
 
     float TouchBeginPosition = 0.0f;
-    Vector3 gyro = Vector3.zero;
-
-    float gyroPosY = 1000.0f;
 
     string a = "none";
 
@@ -51,18 +52,14 @@ public class PlayerMoveSample : MonoBehaviour
         //自分に設定されているAnimatorコンポーネントを取得する
         this.animator = GetComponent<Animator>();
 
-        Input.gyro.enabled = true;
-
-
-        gyroPosY = Input.gyro.attitude.y;
-
+      
 
 
     }
 
     void OnGUI()
     {
-        a = this.gyroPosY.ToString();
+       
 
 
         // ラベルを表示する
@@ -97,14 +94,40 @@ public class PlayerMoveSample : MonoBehaviour
             this.leftKey = true;
         }
 
-        //ここまで処理あり
 
-        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Jump") == false && animator.GetCurrentAnimatorStateInfo(0).IsTag("Sliding") == false)
+
+        //画面がタッチされていたら
+        if(Input.touchCount > 0)
         {
 
-            //画面がタッチされていたら
-            if (Input.touchCount > 0)
+            //タップした際の位置を保存
+            if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
+                onTapPosition = Input.GetTouch(0).position.y;
+
+                //タップを話した際の位置を保存
+            }
+            else if (Input.GetTouch(0).phase == TouchPhase.Ended)
+            {
+                EndTapPosition = Input.GetTouch(0).position.y;
+            }
+
+            //画面がタッチされ、スライドしていたら
+            if (Input.GetTouch(0).phase == TouchPhase.Moved)
+            {
+                
+                moveX = 0.0f;
+
+                //画面上で指が動いたのでフラグにtrueを代入
+                moveFinger = true;
+
+            }
+            else if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Jump") == false && animator.GetCurrentAnimatorStateInfo(0).IsTag("Sliding") == false
+                && moveFinger == false)
+            {
+
+               
+               
 
                 //画面の中央より右側がタップされていて、rightkeyフラグがtrueなら
                 if (Input.GetTouch(0).position.x > (Screen.currentResolution.width / 2) && this.rightKey == true)
@@ -116,7 +139,8 @@ public class PlayerMoveSample : MonoBehaviour
                 {
                     moveX = -1.0f;
 
-                }else
+                }
+                else
                 {
                     moveX = 0.0f;
                 }
@@ -125,27 +149,21 @@ public class PlayerMoveSample : MonoBehaviour
             {
                 moveX = 0.0f;
             }
-           
 
-
-            
-
-
-            if ((Input.gyro.attitude.y) * 100 > 2)
+            Vector3 direction = new Vector3(moveX, 0, moveZ);
+            if (direction.magnitude > 0.01f)
             {
-                moveZ = 1.0f;
+                Quaternion myQ = Quaternion.LookRotation(direction);
+                float step = rotateSpeed * Time.deltaTime;
+
+                this.transform.rotation = Quaternion.Lerp(transform.rotation, myQ, step);
 
             }
-            else if ((Input.gyro.attitude.y) * 100 < -2)
-            {
-                moveZ = -1.0f;
-            }
-            else
-            {
-                moveZ = 0;
-            }
 
-            
+        }
+        else
+        {
+            moveX = 0.0f;
 
             Vector3 direction = new Vector3(moveX, 0, moveZ);
             if (direction.magnitude > 0.01f)
@@ -158,21 +176,41 @@ public class PlayerMoveSample : MonoBehaviour
             }
         }
 
+       
+
+
+
+
         //---------------------------------ここからアニメーションの切り替え処理---------------------------------
-        if (moveX != 0 || moveZ != 0)
+        if (onTapPosition-50 > EndTapPosition && Input.GetTouch(0).phase == TouchPhase.Ended)
         {
-            animator.SetBool(key_isIdle, false);
             animator.SetBool(key_isJump, false);
-            animator.SetBool(key_isRun, true);
-            animator.SetBool(key_isSliding, false);
+            animator.SetBool(key_isRun, false);
+            animator.SetBool(key_isSliding, true);
+
+            onTapPosition = 0;
+            EndTapPosition = 0;
+
+            //ジャンプが開始されたので、フラグにfalseを代入
+            moveFinger = false;
            
+        }else if (onTapPosition+50 < EndTapPosition && Input.GetTouch(0).phase == TouchPhase.Ended)
+        {
+            animator.SetBool(key_isJump, true);
+            animator.SetBool(key_isRun, false);
+            animator.SetBool(key_isSliding, false);
+
+            onTapPosition = 0;
+            EndTapPosition = 0;
+
+            //ジャンプが開始されたので、フラグにfalseを代入
+            moveFinger = false;
         }
         else
         {
-            //その他は待機
-            animator.SetBool(key_isIdle, true);
+            //その他はrun
             animator.SetBool(key_isJump, false);
-            animator.SetBool(key_isRun, false);
+            animator.SetBool(key_isRun, true);
             animator.SetBool(key_isSliding, false);
            
         }
@@ -191,7 +229,13 @@ public class PlayerMoveSample : MonoBehaviour
         }
 
 
-     
+
+        if (Input.GetKeyDown("space"))
+        {
+            animator.SetBool(key_isJump, false);
+            animator.SetBool(key_isRun, false);
+            animator.SetBool(key_isSliding, true);
+        }
 
 
     }
