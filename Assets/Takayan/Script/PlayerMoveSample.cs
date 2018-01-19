@@ -20,7 +20,7 @@ public class PlayerMoveSample : MonoBehaviour
     Animator animator;
 
 
-
+   
     //設定したフラグ名
     const string key_isJump = "isJump";
     const string key_isSliding = "isSliding";
