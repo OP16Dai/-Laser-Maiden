@@ -26,8 +26,12 @@ public class PlayerMove : MonoBehaviour {
     const string key_isSliding = "isSliding";
     //右キーを押せるかどうか
     public bool rightKey = true;
+    [SerializeField]
+    float RightBoundary = 0.0f;
     //左キーを押せるかどうか
     public bool leftKey = true;
+    [SerializeField]
+    float LeftBoundary = 0.0f;
 
 
     void Start()
@@ -41,7 +45,27 @@ public class PlayerMove : MonoBehaviour {
 
     void Update()
     {
+
         
+        if (this.transform.position.x > RightBoundary && this.rightKey != false)
+        {
+            this.rightKey = false;
+        }else if(this.transform.position.x < RightBoundary && this.rightKey != true)
+        {
+            this.rightKey = true;
+        }
+
+        
+        if(this.transform.position.x < LeftBoundary && this.leftKey != false)
+        {
+            this.leftKey = false;
+        }else if(this.transform.position.x > LeftBoundary && this.leftKey != true)
+        {
+            this.leftKey = true;
+        }
+        
+
+
         if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Jump") == false && animator.GetCurrentAnimatorStateInfo(0).IsTag("Sliding") == false)
         {
             if(Input.GetKey(KeyCode.RightArrow) && rightKey == true)
@@ -66,6 +90,10 @@ public class PlayerMove : MonoBehaviour {
                 
             }
         }
+        
+
+
+        
 
 
         //---------------------------------ここから重力に関する処理---------------------------------

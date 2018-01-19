@@ -14,7 +14,7 @@ public class MoveDiagonal : MonoBehaviour {
     public float MoveZ = 0;
 
     //折り返しまでの時間
-    public int BackTime;
+    public float BackTime;
 
     //時間経過
     int CountTime = 0;
@@ -59,7 +59,7 @@ public class MoveDiagonal : MonoBehaviour {
     //============================================================
     void ComeBack()
     {
-        if(CountTime == BackTime * 60)
+        if(CountTime >= BackTime * 60)
         {
             MoveX *= -1;
             MoveY *= -1;
