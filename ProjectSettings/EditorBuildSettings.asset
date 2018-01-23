@@ -4,4 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Fujii/TitleScene/TitleScene.unity
+    guid: 1cb32e597e62a92419fd85754cb71172
+  - enabled: 1
+    path: Assets/Fujii/HomeScene/HomeScene.unity
+    guid: 545cd363f91dd1d4ea98acea2a2252b3
+  - enabled: 1
+    path: Assets/Fujii/StageSelectScene/StageSelectScene.unity
+    guid: 3a59ca5099592164fac307bb80564916
