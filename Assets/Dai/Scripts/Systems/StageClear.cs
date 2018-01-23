@@ -20,6 +20,14 @@ public class StageClear : MonoBehaviour {
     //プレイヤーの制御スクリプト保管
     public PlayerMove PlayerMove;
 
+    //タップ処理
+    Touch touch = Input.GetTouch(0);
+
+    //クリアフラグ
+    bool Clear = false;
+    //次への移動フラグ
+    bool NextStage = false;
+
     void OnTriggerEnter(Collider other)
     {
         //=============================================
@@ -30,21 +38,63 @@ public class StageClear : MonoBehaviour {
             //プレイヤーの動きを停止
             //other.
 
-            //プレイヤーを次の部屋へ移動
+            //=============================================
+            //ステージクリアの表示
+            //=============================================
+            if (this.Clear == false)
+            {
+                this.Clear = true;
+            }
         }
-
-        //=============================================
-        //ステージクリアの表示
-        //=============================================
     }
 
     // Use this for initialization
     void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
+    // Update is called once per frame
+    void Update()
+    {
+        //================================================
+        //クリア表示処理
+        //================================================
+        if (this.Clear == true)
+        {
+            //クリア表示
+
+            //ステージ移動可能に
+            this.NextStage = true;
+        }
+
+        //===============================================
+        //  クリア表示後の移動処理
+        //===============================================
+        if (this.NextStage == true)
+        {    
+            if (touch.phase == TouchPhase.Began)
+            {
+                //===============================
+                // タッチ開始
+                //===============================
+                //タップされたらステージセレクトへ
+
+
+            }
+            else if (touch.phase == TouchPhase.Moved)
+            {
+                //===============================
+                // タッチ移動
+                //===============================
+
+            }
+            else if (touch.phase == TouchPhase.Ended)
+            {
+                //===============================
+                // タッチ終了
+                //===============================
+
+            }
+        }
     }
 }

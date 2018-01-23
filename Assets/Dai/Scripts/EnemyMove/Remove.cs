@@ -19,7 +19,7 @@ public class Remove : MonoBehaviour {
 
     void RemoveRazer()
     {
-        if (transform.position.z < (Player.transform.position.z - 5))
+        if (transform.position.z < (Player.transform.position.z -8))
         {
             Destroy(gameObject);
         }

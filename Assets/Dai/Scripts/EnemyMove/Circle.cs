@@ -21,6 +21,7 @@ public class Circle : MonoBehaviour {
     //====================================================
     float m_startPosX;
     float m_startPosY;
+    float m_startPosZ;
 
 
     // Use this for initialization
@@ -28,6 +29,7 @@ public class Circle : MonoBehaviour {
         //初期位置の設定
         m_startPosX = this.transform.position.x;
         m_startPosY = this.transform.position.y;
+        m_startPosZ = this.transform.position.z;
     }
 	
 	// Update is called once per frame
@@ -36,7 +38,7 @@ public class Circle : MonoBehaviour {
         //  回転処理
         //====================================================
         //位置の変更
-        this.transform.position = new Vector2(radius * Mathf.Sin(angle) + m_startPosX, radius * Mathf.Cos(angle) + m_startPosY);
+        this.transform.position = new Vector3(radius * Mathf.Sin(angle) + m_startPosX, radius * Mathf.Cos(angle) + m_startPosY, m_startPosZ);
         //角度変更
         angle += speed;
 	}
