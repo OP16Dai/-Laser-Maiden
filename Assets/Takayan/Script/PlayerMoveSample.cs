@@ -110,6 +110,12 @@ public class PlayerMoveSample : MonoBehaviour
             else if (Input.GetTouch(0).phase == TouchPhase.Ended)
             {
                 EndTapPosition = Input.GetTouch(0).position.y;
+
+                //指を話した際にタップした場所との差分が一定の数値を超えていなければ
+                if(!(onTapPosition - 50 > EndTapPosition) && !(onTapPosition + 50 < EndTapPosition))
+                {
+                    moveFinger = false;
+                }
             }
 
             //画面がタッチされ、スライドしていたら

@@ -112,7 +112,7 @@ NavMeshSettings:
   m_NavMeshData: {fileID: 0}
 --- !u!1 &482419373 stripped
 GameObject:
-  m_PrefabParentObject: {fileID: 1351843501810610, guid: cb073fe21b418634285d77d120a1016c,
+  m_PrefabParentObject: {fileID: 1988305571368158, guid: bce96d3e22ddbcd42b057ee88bc3fb78,
     type: 2}
   m_PrefabInternal: {fileID: 912704664}
 --- !u!1 &754694313
@@ -279,44 +279,44 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4759986109162188, guid: cb073fe21b418634285d77d120a1016c, type: 2}
+    - target: {fileID: 4657602070072676, guid: bce96d3e22ddbcd42b057ee88bc3fb78, type: 2}
       propertyPath: m_LocalPosition.x
       value: -0.08
       objectReference: {fileID: 0}
-    - target: {fileID: 4759986109162188, guid: cb073fe21b418634285d77d120a1016c, type: 2}
+    - target: {fileID: 4657602070072676, guid: bce96d3e22ddbcd42b057ee88bc3fb78, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0.213
       objectReference: {fileID: 0}
-    - target: {fileID: 4759986109162188, guid: cb073fe21b418634285d77d120a1016c, type: 2}
+    - target: {fileID: 4657602070072676, guid: bce96d3e22ddbcd42b057ee88bc3fb78, type: 2}
       propertyPath: m_LocalPosition.z
       value: -0.46
       objectReference: {fileID: 0}
-    - target: {fileID: 4759986109162188, guid: cb073fe21b418634285d77d120a1016c, type: 2}
+    - target: {fileID: 4657602070072676, guid: bce96d3e22ddbcd42b057ee88bc3fb78, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4759986109162188, guid: cb073fe21b418634285d77d120a1016c, type: 2}
+    - target: {fileID: 4657602070072676, guid: bce96d3e22ddbcd42b057ee88bc3fb78, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4759986109162188, guid: cb073fe21b418634285d77d120a1016c, type: 2}
+    - target: {fileID: 4657602070072676, guid: bce96d3e22ddbcd42b057ee88bc3fb78, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4759986109162188, guid: cb073fe21b418634285d77d120a1016c, type: 2}
+    - target: {fileID: 4657602070072676, guid: bce96d3e22ddbcd42b057ee88bc3fb78, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4759986109162188, guid: cb073fe21b418634285d77d120a1016c, type: 2}
+    - target: {fileID: 4657602070072676, guid: bce96d3e22ddbcd42b057ee88bc3fb78, type: 2}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1351843501810610, guid: cb073fe21b418634285d77d120a1016c, type: 2}
+    - target: {fileID: 1988305571368158, guid: bce96d3e22ddbcd42b057ee88bc3fb78, type: 2}
       propertyPath: m_Name
       value: Robot Kyle Ver2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: cb073fe21b418634285d77d120a1016c, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: bce96d3e22ddbcd42b057ee88bc3fb78, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1041024997
 GameObject:
