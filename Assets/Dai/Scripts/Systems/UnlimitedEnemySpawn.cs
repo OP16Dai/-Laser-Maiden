@@ -30,13 +30,17 @@ public class UnlimitedEnemySpawn : MonoBehaviour {
     void Start()
     {
         //プレイヤー
-        Player = GameObject.Find("Player");
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        //プレイヤーが死んでいたら停止
+        if(Player == null)
+        {
+            return;
+        }
 
         //=================================================
         //  敵の出撃

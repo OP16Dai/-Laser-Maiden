@@ -12,7 +12,14 @@ public class Remove : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
+        //プレイヤーが死んでいたら停止
+        if (Player == null)
+        {
+            return;
+        }
+
         //プレイヤーを通り越したら削除
         RemoveRazer();
     }
