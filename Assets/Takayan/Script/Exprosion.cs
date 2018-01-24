@@ -5,7 +5,7 @@ using UnityEngine;
 public class Exprosion : MonoBehaviour {
 
     public GameObject obj;
-
+    public GameObject Player;
 
 	// Use this for initialization
 	void Start () {
@@ -15,6 +15,7 @@ public class Exprosion : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        
         if (Input.GetKeyDown("space"))
         {
             
@@ -24,4 +25,25 @@ public class Exprosion : MonoBehaviour {
         }
         
 	}
+
+    void OnCollisionEnter(Collision collision)
+    {
+        
+        if(collision.gameObject.tag == "Enemy")
+        {
+
+            Debug.Log("collision");
+           
+
+            GameObject aa = Instantiate(obj);
+
+            aa.transform.SetPositionAndRotation(new Vector3(this.transform.position.x, this.transform.position.y + (0.5f), this.transform.position.z), this.transform.rotation);
+
+            Destroy(Player);
+
+            Player = null;
+        }
+
+       
+    }
 }

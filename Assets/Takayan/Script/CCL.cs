@@ -68,12 +68,18 @@ public class CCL : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (this.anim.GetCurrentAnimatorStateInfo(0).IsTag("Jump") == false)
+        if(player != null)
         {
+            if (this.anim.GetCurrentAnimatorStateInfo(0).IsTag("Jump") == false)
+            {
 
-            //カメラの transform 位置をプレイヤーのものと等しく設定します。ただし、計算されたオフセット距離によるずれも加えます。
-            transform.position = player.transform.position + offset;
 
+                //カメラの transform 位置をプレイヤーのものと等しく設定します。ただし、計算されたオフセット距離によるずれも加えます。
+                transform.position = player.transform.position + offset;
+
+
+
+            }
         }
       
 
@@ -82,8 +88,13 @@ public class CCL : MonoBehaviour {
 
     void LateUpdate()
     {
-        //カメラの transform 位置をプレイヤーのものと等しく設定します。ただし、計算されたオフセット距離によるずれも加えます。
-        transform.position = player.transform.position + offset;
+        if(player != null)
+        {
+            //カメラの transform 位置をプレイヤーのものと等しく設定します。ただし、計算されたオフセット距離によるずれも加えます。
+            transform.position = player.transform.position + offset;
+
+        }
+       
 
       
     }
