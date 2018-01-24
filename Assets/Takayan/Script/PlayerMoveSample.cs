@@ -112,8 +112,7 @@ public class PlayerMoveSample : MonoBehaviour
         if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Jump") == false && animator.GetCurrentAnimatorStateInfo(0).IsTag("Sliding") == false)
         {
 
-            //画面がタッチされていたら
-            if (Input.touchCount > 0)
+          if(Input.touchCount > 0)
             {
 
 
@@ -127,6 +126,12 @@ public class PlayerMoveSample : MonoBehaviour
                 else if (Input.GetTouch(0).phase == TouchPhase.Ended)
                 {
                     EndTapPosition = Input.GetTouch(0).position.y;
+
+                    //指を話した際にタップした場所との差分が一定の数値を超えていなければ
+                    if (!(onTapPosition - 50 > EndTapPosition) && !(onTapPosition + 50 < EndTapPosition))
+                    {
+                        moveFinger = false;
+                    }
                 }
 
                 //画面がタッチされ、スライドしていたら
@@ -167,34 +172,19 @@ public class PlayerMoveSample : MonoBehaviour
                 }
 
 
+            }
+
+
+            Vector3 direction = new Vector3(moveX, 0, moveZ);
+            if (direction.magnitude > 0.01f)
+            {
+                Quaternion myQ = Quaternion.LookRotation(direction);
+                float step = rotateSpeed * Time.deltaTime;
+
+                this.transform.rotation = Quaternion.Lerp(transform.rotation, myQ, step);
 
             }
 
-                if ((Input.gyro.attitude.y) * 100 > 2)
-                {
-                    moveZ = 1.0f;
-
-                }
-                else if ((Input.gyro.attitude.y) * 100 < -2)
-                {
-                    moveZ = -1.0f;
-                }
-                else
-                {
-                    moveZ = 0;
-                }
-
-
-
-                Vector3 direction = new Vector3(moveX, 0, moveZ);
-                if (direction.magnitude > 0.01f)
-                {
-                    Quaternion myQ = Quaternion.LookRotation(direction);
-                    float step = rotateSpeed * Time.deltaTime;
-
-                    this.transform.rotation = Quaternion.Lerp(transform.rotation, myQ, step);
-
-                }
 
         }
         else
@@ -210,7 +200,13 @@ public class PlayerMoveSample : MonoBehaviour
                 this.transform.rotation = Quaternion.Lerp(transform.rotation, myQ, step);
 
             }
+
         }
+
+
+
+       
+        
 
 
             //---------------------------------ここからアニメーションの切り替え処理---------------------------------
