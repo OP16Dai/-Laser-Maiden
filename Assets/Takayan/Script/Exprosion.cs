@@ -7,9 +7,14 @@ public class Exprosion : MonoBehaviour {
     public GameObject obj;
     public GameObject Player;
 
+    //爆発効果音
+    public AudioClip exprosion_clip;
+    public AudioSource SoundEffect_source;
+
+
 	// Use this for initialization
 	void Start () {
-		
+        
 	}
 	
 	// Update is called once per frame
@@ -29,11 +34,11 @@ public class Exprosion : MonoBehaviour {
     void OnCollisionEnter(Collision collision)
     {
         
-        if(collision.gameObject.tag == "Enemy")
+        if(collision.gameObject.name == "Enemy")
         {
 
-            Debug.Log("collision");
-           
+
+            SoundEffect_source.PlayOneShot(exprosion_clip);
 
             GameObject aa = Instantiate(obj);
 

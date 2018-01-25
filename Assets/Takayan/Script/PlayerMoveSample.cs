@@ -19,8 +19,13 @@ public class PlayerMoveSample : MonoBehaviour
     //Animatorコンポーネント
     Animator animator;
 
+    //効果音
+    public AudioClip jump_clip;
+    public AudioClip sliding_clip;
+    public AudioSource SoundEffect_source;
 
-   
+
+
     //設定したフラグ名
     const string key_isJump = "isJump";
     const string key_isSliding = "isSliding";
@@ -110,22 +115,24 @@ public class PlayerMoveSample : MonoBehaviour
             else if (Input.GetTouch(0).phase == TouchPhase.Ended)
             {
                 EndTapPosition = Input.GetTouch(0).position.y;
-
+               
                 //指を話した際にタップした場所との差分が一定の数値を超えていなければ
-                if(!(onTapPosition - 50 > EndTapPosition) && !(onTapPosition + 50 < EndTapPosition))
+                if(!((onTapPosition - 150) > EndTapPosition) || !((onTapPosition + 150) < EndTapPosition))
                 {
                     moveFinger = false;
+                   
                 }
             }
 
-            //画面がタッチされ、スライドしていたら
-            if (Input.GetTouch(0).phase == TouchPhase.Moved)
+            //画面がタッチされ、一定距離を離れていたら
+            if ((((onTapPosition - Input.GetTouch(0).position.y) > 20.0) || (Input.GetTouch(0).position.y - onTapPosition > 20.0)))
             {
                 
                 moveX = 0.0f;
 
                 //画面上で指が動いたのでフラグにtrueを代入
-                moveFinger = true;
+                if(Input.GetTouch(0).phase != TouchPhase.Ended)
+                    moveFinger = true;
 
             }
             else if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Jump") == false && animator.GetCurrentAnimatorStateInfo(0).IsTag("Sliding") == false
@@ -188,7 +195,9 @@ public class PlayerMoveSample : MonoBehaviour
 
 
         //---------------------------------ここからアニメーションの切り替え処理---------------------------------
-        if (onTapPosition-50 > EndTapPosition && Input.GetTouch(0).phase == TouchPhase.Ended)
+        if (onTapPosition-150 > EndTapPosition && Input.GetTouch(0).phase == TouchPhase.Ended && 
+            animator.GetCurrentAnimatorStateInfo(0).IsTag("Jump") == false &&
+            animator.GetCurrentAnimatorStateInfo(0).IsTag("Sliding") == false)
         {
             animator.SetBool(key_isJump, false);
             animator.SetBool(key_isRun, false);
@@ -199,8 +208,14 @@ public class PlayerMoveSample : MonoBehaviour
 
             //ジャンプが開始されたので、フラグにfalseを代入
             moveFinger = false;
-           
-        }else if (onTapPosition+50 < EndTapPosition && Input.GetTouch(0).phase == TouchPhase.Ended)
+
+            //エフェクト生成
+            SoundEffect_source.PlayOneShot(sliding_clip);
+
+        }
+        else if (onTapPosition+150 < EndTapPosition && Input.GetTouch(0).phase == TouchPhase.Ended &&
+            animator.GetCurrentAnimatorStateInfo(0).IsTag("Sliding") == false &&
+            animator.GetCurrentAnimatorStateInfo(0).IsTag("Jump") == false)
         {
             animator.SetBool(key_isJump, true);
             animator.SetBool(key_isRun, false);
@@ -210,7 +225,10 @@ public class PlayerMoveSample : MonoBehaviour
             EndTapPosition = 0;
 
             //ジャンプが開始されたので、フラグにfalseを代入
-            moveFinger = false;
+           moveFinger = false;
+
+            //エフェクト再生
+            SoundEffect_source.PlayOneShot(jump_clip);
         }
         else
         {
@@ -218,6 +236,8 @@ public class PlayerMoveSample : MonoBehaviour
             animator.SetBool(key_isJump, false);
             animator.SetBool(key_isRun, true);
             animator.SetBool(key_isSliding, false);
+
+            
            
         }
 
@@ -241,6 +261,8 @@ public class PlayerMoveSample : MonoBehaviour
             animator.SetBool(key_isJump, false);
             animator.SetBool(key_isRun, false);
             animator.SetBool(key_isSliding, true);
+
+         
         }
 
 
@@ -248,8 +270,8 @@ public class PlayerMoveSample : MonoBehaviour
 
     void FixedUpdate()
     {
-
-
+        a = moveFinger.ToString();
+        
     }
 
 }
