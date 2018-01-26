@@ -10,7 +10,7 @@ public class Emergence : MonoBehaviour {
     //ステージステータス管理オブジェクト保管
     GameObject Status;
     //レベル管理スクリプト保管
-    LevelCount LevelCount;
+    //LevelCount LevelCount;
 
     //現在のステージ
     int Stage;
@@ -42,7 +42,7 @@ public class Emergence : MonoBehaviour {
         //ステージステータスオブジェクト保管
         Status = GameObject.Find("StageStatus");
         //レベル管理スクリプト保管
-        LevelCount = Status.GetComponent<LevelCount>();
+        //LevelCount = Status.GetComponent<LevelCount>();
     }
 
 
@@ -140,7 +140,7 @@ public class Emergence : MonoBehaviour {
     //=========================================
     void NowLevel()
     {
-        Level = LevelCount.Level;
+        //Level = LevelCount.Level;
     }
 
 }

@@ -18,7 +18,7 @@ public class StageClear : MonoBehaviour {
     //プレイヤー保管
     public GameObject Player;
     //プレイヤーの制御スクリプト保管
-    public PlayerMove PlayerMove;
+    //public PlayerMove PlayerMove;
 
     //タップ処理
     Touch touch = Input.GetTouch(0);
