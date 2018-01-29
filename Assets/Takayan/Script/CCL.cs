@@ -52,8 +52,7 @@ public class CCL : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
         //プレイヤーとカメラ間の距離を取得してそのオフセット値を計算し、格納します。
         offset.x = transform.position.x - player.transform.position.x;
-        //offset.y = transform.position.y - player.transform.position.y;
-        offset.y = transform.position.y;
+        offset.y = transform.position.y - player.transform.position.y;
         offset.z = transform.position.z - player.transform.position.z;
 
         offset2 = transform.position - player.transform.position;
@@ -79,6 +78,7 @@ public class CCL : MonoBehaviour {
                 transform.position = player.transform.position + offset;
 
 
+
             }
         }
       
@@ -96,24 +96,6 @@ public class CCL : MonoBehaviour {
         }
        
 
-        /*
-        if (this.anim.GetCurrentAnimatorStateInfo(0).IsTag("Jump") == true)
-        {
-
-            //カメラの transform 位置をプレイヤーのものと等しく設定します。ただし、計算されたオフセット距離によるずれも加えます。
-            transform.position = player.transform.position + offset;
-
-           
-
-        }
-        else
-        {
-            offset.y -= (player.transform.position.y);
-            transform.position = player.transform.position + offset;
-            offset.y += (player.transform.position.y);
-
-  
-        }
-        */
+      
     }
 }

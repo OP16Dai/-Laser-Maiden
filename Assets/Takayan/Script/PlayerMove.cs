@@ -138,11 +138,6 @@ public class PlayerMove : MonoBehaviour {
 
     }
 
-    private void LateUpdate()
-    {
-       // GameObject.FindGameObjectWithTag("Player").transform.Translate(0, -0.08f, 0);
-    }
-
     void FixedUpdate()
     {
         //rb.velocity = new Vector3(moveX, 0, moveZ);
@@ -216,17 +211,11 @@ public class PlayerMove : MonoBehaviour {
             animator.SetBool(key_isJump, true);
 
         }
-<<<<<<< HEAD
-
-    
-         
-=======
         if (Input.GetKeyUp(KeyCode.A))
         {
             animator.SetBool(key_isJump, false);
         }
         
->>>>>>> ddbbfb804b86e93067df6e259045cb137838c0e9
     }
 
     */
